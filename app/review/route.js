@@ -6,6 +6,17 @@ const {
 
 export default Route.extend({
   model() {
-    this.store.findAll('application');
+    this.store.peekAll('application')
+      .filter((application) => {
+        let allMatch = true;
+
+        application.get('applicationQuestions').forEach((aQ) => {
+          if (aQ.get('answer') !== aQ.get('question.answer')) {
+            allMatch = false;
+          }
+        });
+
+        return allMatch;
+      });
   }
 });

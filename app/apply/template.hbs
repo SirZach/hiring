@@ -11,8 +11,40 @@
       vertical=true
       onStepperCompleted=(action 'saveModel') as |stepper|}}
 
+      {{#stepper.step
+        summary=model.name
+        label='Name'
+        as |step|
+      }}
+        {{#step.body}}
+          {{paper-input
+            required=true label='Name'
+            value=model.name
+            onChange=(action (mut model.name))
+            hideAllMessages=true
+          }}
+        {{/step.body}}
+        {{#step.actions as |nextStep previousStep|}}
+          {{#paper-button
+            primary=true
+            raised=true
+            disabled=(not model.name)
+            onClick=(action nextStep)
+          }}
+            Continue
+          {{/paper-button}}
+          {{#paper-button onClick=(action previousStep)}}
+            Back
+          {{/paper-button}}
+        {{/step.actions}}
+      {{/stepper.step}}
+
       {{#each model.applicationQuestions as |aQ|}}
-        {{#stepper.step label=aQ.question.question as |step|}}
+        {{#stepper.step
+          label=aQ.question.question
+          summary=aQ.answer
+          as |step|
+        }}
           {{#step.body}}
 
             {{#paper-radio-group
