@@ -8,7 +8,7 @@ export default Route.extend({
   model() {
     let applications = this.store.peekAll('application');
 
-    return applications.toArray().filter((application) => {
+    return applications.filter((application) => {
       let allMatch = true;
 
       application.get('applicationQuestions').forEach((aQ) => {
@@ -16,7 +16,6 @@ export default Route.extend({
           allMatch = false;
         }
       });
-      debugger;
 
       return allMatch;
     });

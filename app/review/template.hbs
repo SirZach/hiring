@@ -1,3 +1,19 @@
-{{#each model as |application|}}
-  {{application.name}}
-{{/each}}
+{{#if model.length}}
+  {{#paper-list}}
+    {{#paper-subheader}}100% Correct Applicants{{/paper-subheader}}
+    {{#each model as |application|}}
+      {{#paper-item as |controls|}}
+        <p>{{application.name}}</p>
+      {{/paper-item}}
+      {{paper-divider}}
+    {{/each}}
+  {{/paper-list}}
+{{else}}
+  {{#paper-card as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}}No applicants :({{/text.headline}}
+      {{/title.text}}
+    {{/card.title}}
+  {{/paper-card}}
+{{/if}}
