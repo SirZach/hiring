@@ -1,0 +1,18 @@
+$primary: 'light-blue';
+$accent: 'orange';
+
+@import 'ember-paper';
+@import "ember-paper-stepper";
+
+body {
+  background-color: color($primary, '200');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.p-2 { padding: 8px; }
+
+.h-100vh { height: 100vh; }
+.w-100vw { width: 100vw; }

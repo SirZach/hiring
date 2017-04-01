@@ -1,0 +1,44 @@
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}Application{{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    {{#paper-stepper
+      currentStep=currentStep
+      onStepChange=(action (mut currentStep))
+      vertical=true
+      onStepperCompleted=(action 'saveModel') as |stepper|}}
+
+      {{#each model.applicationQuestions as |aQ|}}
+        {{#stepper.step label=aQ.question.question as |step|}}
+          {{#step.body}}
+
+            {{#paper-radio-group
+              groupValue=(readonly aQ.answer)
+              onChange=(action (mut aQ.answer)) as |group|}}
+              {{#group.radio value='Yes'}}Yes{{/group.radio}}
+              {{#group.radio value='No'}}No{{/group.radio}}
+              {{#group.radio value='Maybe'}}Maybe{{/group.radio}}
+            {{/paper-radio-group}}
+
+          {{/step.body}}
+          {{#step.actions as |nextStep previousStep|}}
+            {{#paper-button
+              primary=true
+              raised=true
+              disabled=(not aQ.answer)
+              onClick=(action nextStep)
+            }}
+              Continue
+            {{/paper-button}}
+            {{#paper-button onClick=(action previousStep)}}
+              Back
+            {{/paper-button}}
+          {{/step.actions}}
+        {{/stepper.step}}
+      {{/each}}
+    {{/paper-stepper}}
+  {{/card.content}}
+{{/paper-card}}

@@ -1,0 +1,21 @@
+{{#paper-card class="main-card" as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}Are you an employee?{{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.actions}}
+    {{#paper-button
+      primary=true
+      raised=true
+      onClick=(transition-to 'review')
+    }}
+      Yes
+    {{/paper-button}}
+    {{#paper-button
+      onClick=(transition-to 'apply')
+    }}
+      No
+    {{/paper-button}}
+  {{/card.actions}}
+{{/paper-card}}
