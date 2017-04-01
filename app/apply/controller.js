@@ -9,7 +9,7 @@ export default Controller.extend({
 
   actions: {
     saveModel() {
-
+      this.transitionToRoute('thank-you');
     }
   }
 });

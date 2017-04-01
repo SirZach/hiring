@@ -6,17 +6,19 @@ const {
 
 export default Route.extend({
   model() {
-    this.store.peekAll('application')
-      .filter((application) => {
-        let allMatch = true;
+    let applications = this.store.peekAll('application');
 
-        application.get('applicationQuestions').forEach((aQ) => {
-          if (aQ.get('answer') !== aQ.get('question.answer')) {
-            allMatch = false;
-          }
-        });
+    return applications.toArray().filter((application) => {
+      let allMatch = true;
 
-        return allMatch;
+      application.get('applicationQuestions').forEach((aQ) => {
+        if (aQ.get('answer') !== aQ.get('question.answer')) {
+          allMatch = false;
+        }
       });
+      debugger;
+
+      return allMatch;
+    });
   }
 });
