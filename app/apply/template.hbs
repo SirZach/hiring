@@ -63,7 +63,11 @@
               disabled=(not aQ.answer)
               onClick=(action nextStep)
             }}
-              Continue
+              {{#if (eq aQ model.applicationQuestions.lastObject)}}
+                Complete!
+              {{else}}
+                Continue
+              {{/if}}
             {{/paper-button}}
             {{#paper-button onClick=(action previousStep)}}
               Back
