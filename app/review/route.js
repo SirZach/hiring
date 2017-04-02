@@ -6,6 +6,6 @@ const {
 
 export default Route.extend({
   model() {
-    return this.store.peekAll('application');
+    return this.store.findAll('application');
   }
 });

@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 const {
-  Controller
+  Controller,
+  get
 } = Ember;
 
 export default Controller.extend({
@@ -9,7 +10,12 @@ export default Controller.extend({
 
   actions: {
     saveModel() {
-      this.transitionToRoute('thank-you');
+      let model = get(this, 'model');
+
+      model.save()
+        .then(() => {
+          this.transitionToRoute('thank-you');
+        });
     }
   }
 });
