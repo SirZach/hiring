@@ -19,5 +19,11 @@ export default Route.extend({
           applicationQuestions
         });
       });
+  },
+
+  setupController(controller, model) {
+    this._super(...arguments);
+
+    controller.set('currentStep', 0);
   }
 });

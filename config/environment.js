@@ -5,7 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'hiring',
     environment: environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
+    API_URL: 'http://localhost:3000',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

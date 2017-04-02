@@ -8,6 +8,8 @@ const {
 export default Controller.extend({
   questions: [],
 
+  currentStep: 0,
+
   actions: {
     saveModel() {
       let model = get(this, 'model');
