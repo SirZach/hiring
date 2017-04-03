@@ -44,7 +44,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.API_URL = 'http://localhost:49160';
   }
 
   return ENV;
